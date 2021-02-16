@@ -20,5 +20,5 @@ public class MainActivity extends AppCompatActivity {
         adBumpInterface.loadHtmlFile("file:///android_asset/test.html");
         adBumpInterface.setMusicFile(R.raw.music);
         adBumpInterface.playAndShow();
-    }   
+    }
 }
