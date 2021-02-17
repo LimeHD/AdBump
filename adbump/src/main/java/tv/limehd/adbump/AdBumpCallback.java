@@ -9,4 +9,6 @@ public interface AdBumpCallback {
     void onSuccessShow();
 
     void onFailureShow();
+
+    void onFailureLoad();
 }

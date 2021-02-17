@@ -15,6 +15,7 @@ public class AdBump extends WebView implements AdBumpInterface {
     Player player;
     AdBumpCallback webViewCallback;
     final static int FAIL_PLAY_MUSIC = 100;
+
     public AdBump(@NonNull Context context) {
         super(context);
     }
@@ -33,7 +34,6 @@ public class AdBump extends WebView implements AdBumpInterface {
 
     @Override
     public void playAndShow() {
-        Log.d("TAG","play");
         showWebView();
         try {
             player.playMusic();
@@ -63,7 +63,6 @@ public class AdBump extends WebView implements AdBumpInterface {
     public void stopMusic() {
         player.stopMusic();
     }
-
 
 
     @Override
@@ -110,7 +109,6 @@ public class AdBump extends WebView implements AdBumpInterface {
     }
 
 
-
     @Override
     public void reloadWebView() {
         reload();
@@ -123,7 +121,13 @@ public class AdBump extends WebView implements AdBumpInterface {
 
     @Override
     public void loadHtmlFile(String html) {
-        loadUrl(html);
+        try {
+            loadUrl(html);
+        } catch (Exception e) {
+            if (webViewCallback != null) {
+                webViewCallback.onFailureLoad();
+            }
+        }
     }
 
     public void setWebViewCallback(AdBumpCallback listener) {

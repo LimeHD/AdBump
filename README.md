@@ -19,7 +19,7 @@
 
 ```java
 AdBump adBump = findViewById(R.id.adBump); //находим View
-AdBumpInterface adBumpInterface =  adBumpInterface = adBump.getWebViewInterface(); 
+AdBumpInterface adBumpInterface = adBump.getWebViewInterface(); 
 // Получаем интерефейс для работа с AdBump
 ```
 ### Подготавливаем AdBump к показу

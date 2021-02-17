@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         adBump = findViewById(R.id.adBump);
         adBumpInterface = adBump.getWebViewInterface();
-        adBumpInterface.loadHtmlFile("file:///android_asset/test.html");
+        adBumpInterface.loadHtmlFile("file:///android_asset/lime_hd.html");
         adBumpInterface.setMusicFile(R.raw.music);
         adBumpInterface.playAndShow();
     }
