@@ -2,11 +2,16 @@ package tv.limehd.adbump;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 
@@ -30,6 +35,15 @@ public class AdBump extends WebView implements AdBumpInterface {
         player = new Player(getContext());
         getSettings().setJavaScriptEnabled(true);
         setWebChromeClient(new WebChromeClient());
+        setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                if (webViewCallback != null) {
+                    webViewCallback.onFailureLoad();
+                }
+            }
+        });
     }
 
     @Override
@@ -121,14 +135,9 @@ public class AdBump extends WebView implements AdBumpInterface {
 
     @Override
     public void loadHtmlFile(String html) {
-        try {
-            loadUrl(html);
-        } catch (Exception e) {
-            if (webViewCallback != null) {
-                webViewCallback.onFailureLoad();
-            }
-        }
+        loadUrl(html);
     }
+
 
     public void setWebViewCallback(AdBumpCallback listener) {
         webViewCallback = listener;

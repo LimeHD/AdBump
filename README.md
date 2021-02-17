@@ -61,3 +61,10 @@ adBumpInterface.reloadWebView();
 ```java
 adBumpInterface.destroyWebView();
 ```
+
+## Important
+Добавить это разрешение:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+```
