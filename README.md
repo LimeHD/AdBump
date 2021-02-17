@@ -1,2 +1,26 @@
-# AdBump
-<b>Header</>
+### AdBump
+
+
+### Usage
+
+## Quick start
+ Добавить в свой xml AdBump
+#XML
+```xml
+<tv.limehd.adbump.AdBump
+        android:id="@+id/adBump"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+```
+#Java
+
+```java
+AdBump adBump = findViewById(R.id.adBump); //находим View
+AdBumpInterface adBumpInterface =  adBumpInterface = adBump.getWebViewInterface(); 
+// Получаем интерефейс для работа с AdBump
+adBumpInterface.loadHtmlFile("file:///android_asset/test.html"); // Даем ссылку на HTML
+ adBumpInterface.setMusicFile(R.raw.music);
+        adBumpInterface.playAndShow();
+```
+
